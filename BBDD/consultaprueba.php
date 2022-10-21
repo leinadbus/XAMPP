@@ -1,9 +1,12 @@
 <?php
 include "login.php";
 
-$sql= "SELECT * FROM alumnos WHERE  ";
 
-echo "<table bordercolor=black border= 1px>";
+//Prueba de consula de datos con formato de tablas::::
+
+$sql= "SELECT * FROM alumnos WHERE TELEFONO LIKE '7%' ";
+
+echo "<table  border=1px >";
 
 foreach (($conn->query($sql)) as $row){
    echo "
@@ -15,4 +18,18 @@ foreach (($conn->query($sql)) as $row){
    " ;
 }
 echo "</table>";
+
+//Preparación de consultas:::
+$primerValor= "J";
+//$segundoValor= "alumnos";
+$stmt = $conn->prepare("SELECT * FROM ALUMNOS WHERE APELLIDOS LIKE '?%' ");
+$stmt->bindParam(1, $primerValor);
+//$stmt->bindParam(2, $segundoValor);
+
+
+$stmt->execute();
+
+
+
+
 ?>
