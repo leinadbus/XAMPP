@@ -1,5 +1,5 @@
 <?php
-//function conexion () {
+function conexion () {
 $servername = "localhost";
 $username = "root";
 $passord = "";
@@ -14,5 +14,5 @@ try {
     echo "Connection failed: " . $e->getMessage();
 }
 return $conn;                   
-//}
+}
 ?>

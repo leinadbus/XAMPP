@@ -1,3 +1,12 @@
+<?php
+if (isset($_POST["numero"])){
+    $numero=$_POST["numero"]; //mirar si funciona post numero o es otra variable abajo
+}else {
+    $numero="";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +19,7 @@
 
         <label for="nombre" >Escribe un número entero:</label>
     
-        <input type="number" name="nombre" value = <?php $numero ?> required></input>
+        <input type="number" min="1" name="numero" value="<?=$numero?>"></input>
     
         <input type="submit" name="botonEnviar" value="Enviar datos" ></input>
     
@@ -21,9 +30,8 @@
     <?php
     if(isset($_POST['botonEnviar'])){ 
     //$numero = rand(1,100);
-    $numero=(int)$_POST['nombre'];
+    $numero=(int)$_POST['numero'];
     $suma=0;
-    echo $numero . "<br>";
     for ($i=1;$i<=$numero;$i++){
         if ($i%2==0){
            // echo $i . "<br>";

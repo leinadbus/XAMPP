@@ -4,7 +4,7 @@ $servidor = "localhost";
 $usuario ="root";
 $clave ="";
 $sql="";
-
+ echo "<link rel='stylesheet' type='text/css' href='stilo.css'/>";
 
     try {
         $conn = new PDO ("mysql:host=$servidor;dbname=mibbdd;charset=utf8",$usuario,$clave);
