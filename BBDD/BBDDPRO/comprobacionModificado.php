@@ -19,7 +19,7 @@ if (isset($_POST['codigo'])){
         //si lo encuentra pinta un formulario para intoducir 
         if($reg<=0){
             $msg= "El alumno a modificar NO existe en la BD";
-            $daosCorrectos=false;
+            $datosCorrectos=false;
         }else
             $datosCorrectos=true;
     }catch(PDOException $e){
