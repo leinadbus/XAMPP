@@ -6,12 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel='stylesheet' type='text/css' href='stilo.css'/>
+
 </head>
+<body>
+<h1> Modificar alumno</h1>
+
 <?php
 //conprobamos si ha escrito algo en el campo del formulario de la página
 $msg = "";
 $datosCorrectos = false;
-if (isset($_POST['codigo'])) {
+if (isset($_POST['btnEnviar'])) {
     $servidor = "localhost";
     $usuario = "root";
     $clave = "";
@@ -57,20 +62,25 @@ if (!$datosCorrectos) {
     $html .= "<input type='hidden' name='hiddenCodigo' value='" . $reg['CODIGO'] . "'><br><br/>";
     $html .= "<input type='submit' name='btnModificar' value='Modificar'>";
     $html .= "</fieldset></form>";
+    $html .="<p><a href='modificar.php'>Atrás</a></p>";
     $html .= "";
 }
 echo $html;
 
 ?>
 <?php
-$msg = "";
+//$msg = "";
 if (isset($_POST['btnModificar'])) {
     $servidor = "localhost";
     $usuario = "root";
     $clave = "";
 
     $nombre=$_POST['nombre'];
-    echo $nombre;
+    $apellido=$_POST['apellidos'];
+    $telefono=$_POST['telefono'];
+    $correo=$_POST['correo'];
+    $codigo=$_POST['hiddenCodigo'];
+   // echo $nombre;
     try {
         $conn = new PDO("mysql:host=$servidor;dbname=mibbdd;charset=utf8", $usuario, $clave);
         //asignamos el modo excepcion
@@ -78,24 +88,23 @@ if (isset($_POST['btnModificar'])) {
         $sql = "UPDATE ALUMNOS SET NOMBRE=:nom, APELLIDOS=:ape, TELEFONO=:tel, CORREO=:correo WHERE CODIGO=:cod";
         $stms = $conn->prepare($sql);
         $stms->bindParam(':nom', $nombre);
-        $stms->bindParam(':ape', $_POST['apellidos']);
-        $stms->bindParam(':tel', $_POST['telefono']);
-        $stms->bindParam(':correo', $_POST['correo']);
-        $stms->bindParam(':cod', $_POST['codigo']);
-        exec($stms);
+        $stms->bindParam(':ape', $apellido);
+        $stms->bindParam(':tel', $telefono);
+        $stms->bindParam(':correo',$correo);
+        $stms->bindParam(':cod', $codigo);
+        if($stms->execute())
             $msg = "El alumn@ se ha Actualizado correctamente";
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
     $conn = null;
 } else {
-    $msg = "Hay algún error en los datos a modificar ";
+    //$msg = "Hay algún error en los datos a modificar ";
 }
 ?>
-<h1> Modificar alumno</h1>
-<p style="color:red;"><?= $msg ?></p>
 
-
+<p style="color:rgb(243, 138, 138);"><?php echo $msg; ?></p> <!--ESto hay que mirarlo bien!!!!!!!!!!!!-->
+<p><a href='index.html'>Volver</a></p>
 </body>
 
 </html>

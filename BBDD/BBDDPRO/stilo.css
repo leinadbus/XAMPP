@@ -1,3 +1,22 @@
 body {
-    background-color: #a4a4ed;
+    background-color: #9c9c9c;
 }
+
+div{
+
+    float: none;
+    text-align: center;
+
+}
+
+table {
+    float: none;
+    width:50%;
+
+     
+}
+
+
+        fieldset {
+            width: 30%;
+        }

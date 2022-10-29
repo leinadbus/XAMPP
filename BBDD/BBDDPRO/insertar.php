@@ -16,6 +16,7 @@ if(isset($_POST['btnEnviar'])) {
         $sql="SELECT COUNT(*) AS 'cantidad' FROM ALUMNOS WHERE correo='".$_POST['mail']."';";
         $result=$conn->query($sql);
         $num=$result->fetch();
+
         if($num['cantidad']>0){
             echo "Alumno ya matriculado, no es posible dar de alta<br>";
             echo "<p><a href='index.html'>Volver</a></p>";
