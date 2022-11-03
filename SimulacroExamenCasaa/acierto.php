@@ -25,12 +25,14 @@
         $intentos=$_POST['intentos']+1;
 
          if(empty($_POST['numAle'])){
+
            $numalea=rand($inferior,$superior);
-        }else
-        $numalea=$_POST['numAle'];
-        //$numalea=$_POST['numAle'] ?? rand($inferior,$superior);
+
+         }else $numalea=$_POST['numAle'];
+
+        //$numalea = (empty($_POST['numAle'])) ? $_POST['numAle'] : (rand($inferior,$superior));
         
-        echo $numalea;
+       echo $numalea;
         $numeroUser=$_POST['numeroUser'];
 
 
@@ -51,7 +53,7 @@
         <input type="hidden" name="inferior" value="<?=$inferior?>">
         <input type="hidden" name="superior" value="<?=$superior?>">
         <input type="hidden" name="numAle" value="<?=$numalea?? ''?>">
-        <input type="hidden" name="intentos" value="<?=$intentos??'0'?>">
+        <input type="hidden" name="intentos" value="<?=$intentos??'1'?>">
         <input type="submit" name="enviar" value="Enviar">
         <?php echo "<br>Número de intentos: ",$_POST['intentos']??'' ?>
     </from>
