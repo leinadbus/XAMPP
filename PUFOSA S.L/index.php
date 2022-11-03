@@ -17,13 +17,14 @@
     <form method="post" action="administrador/menu.php">
         <fieldset>
             <legend>Inicio Sesión</legend>
-<label for="usuario">Usuario</label>
-<input type="text" name="usuario" required>
+<label for="user">Usuario</label>
+<input type="text" name="user" required>
 <label for="contraseña">Contraseña</label>
 <input type="text" name="contraseña" required>
 <input type="submit" name="btnEnviar" >
-</fieldset>
 
+</fieldset>
+<p><?php echo $_GET['msg']?? '' ?></p>
     </form>
 </body>
 </html>

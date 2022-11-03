@@ -5,11 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        fieldset {
+            width: 20%;
+        }
+
+    </style>
     <?php
 
 
-$usuario=$_POST['usuario'];
+$user=$_POST['user'];
 $contraseña=$_POST['contraseña'];
+$empresario='';
+
+if ($contraseña != 1111){
+    header("location:../index.php?msg=contraseña incorrecta");
+}else{
 
 $tblDatos = null;
 $servidor = "localhost";
@@ -22,28 +33,162 @@ $sql="";
 
         //asignamos el modo excepción
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql= "SELECT empleado_ID FROM empleados where empleado_ID LIKE :ide";
+        $sql = "SELECT Funcion FROM empleados, trabajos where empleados.empleado_ID = '$user' AND empleados.Trabajo_ID=trabajos.Trabajo_ID;";
 
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':ide',$usuario);
         $stmt->execute();
         $registros=$stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        if(count($registros)>=0){
-            header("locale:../index.html");
+        if($registros==null){
+            header("location:../index.php?msg=Usuario incorrecto");
+           
         }else {
             
+            $result=$conn->query($sql);
+            $num=$result->fetch();
+ 
+            if (($num['Funcion'])=='MANAGER'){
+                
+                echo "<p>Bienvenid@ Administrador/a</p>";
+            }else if ($num['Funcion']=="PRESIDENT"){
+                
+                echo "<p>Bienvenid@ Presidente/a</p>";
+                $empresario= "<a href=''>Informe de Departamentos</a>";
+            }else header("location:../usuario/menu.php");
         }
     }
     catch(PDOException $e){
+        echo "No conecta la base";
         echo "Error: " . $e->getMessage();
     }
     $conn=null;
-
+}
 
 ?>
 </head>
 <body>
-    <h1>funciona</h1>
+    <h1>PUFOSA S.L.</h1>
+    <form method="post" >
+
+    <fieldset>
+            <legend>¿Qué quieres hacer?</legend>
+    <select name="accion">
+     <option value="1">Ver Tablas</option>
+     <option value="2">Añadir datos</option>
+     <option value="3">Editar Tablas</option>
+     <option value="4">Borrar Datos</option>
+    </select>
+</fieldset>
+<fieldset>
+            <legend>¿De qué tabla?</legend>
+    <select name="tabla">
+     <option value="5">Clientes</option>
+     <option value="6">Departamentos</option>
+     <option value="7">Empleados</option>
+     <option value="8">Trabajos</option>
+     <option value="9">Ubicación</option>
+    </select>
+    </fieldset>
+
+    <p><?php echo $empresario ?></p>
+
+<p><input type="submit" name="enviar" value="Enviar datos"></p>
+</form>
+
+ <?php
+ 
+if (isset($_POST['enviar'])){
+    
+    switch($_POST["tabla"]){
+        case 5:
+            switch($_POST["accion"]){
+                case 1:
+                    header("location:operaciones/ver.php?valor=cliente");
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+
+            }
+        break;
+        case 6:
+            switch($_POST["accion"]){
+                case 1:
+                    header("location:operaciones/ver.php?valor=departamento");
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+
+            }
+            break;
+        case 7:
+            switch($_POST["accion"]){
+                case 1:
+                    header("location:operaciones/ver.php?valor=empleados");
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+
+            }
+            break;
+        case 8:
+            switch($_POST["accion"]){
+                case 1:
+                    header("location:operaciones/ver.php?valor=trabajos");
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+
+            }
+            break;
+        case 9:
+            switch($_POST["accion"]){
+                case 1:
+                    header("location:operaciones/ver.php?valor=ubicacion");
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+
+            }
+            break;
+            default: echo "Algo salió mal";
+        
+    } 
+}
+?>
 </body>
 </html>
