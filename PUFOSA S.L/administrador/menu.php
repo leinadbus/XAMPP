@@ -12,7 +12,10 @@
 
     </style>
     <?php
+require "../conexión.php";
 
+$conn=conectar();
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $user=$_POST['user'];
 $contraseña=$_POST['contraseña'];
@@ -22,17 +25,7 @@ if ($contraseña != 1111){
     header("location:../index.php?msg=contraseña incorrecta");
 }else{
 
-$tblDatos = null;
-$servidor = "localhost";
-$usuario ="root";
-$clave ="";
-$sql="";
-
-    try {
-        $conn = new PDO ("mysql:host=$servidor;dbname=pufosa;charset=utf8",$usuario,$clave);
-
-        //asignamos el modo excepción
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
         $sql = "SELECT Funcion FROM empleados, trabajos where empleados.empleado_ID = '$user' AND empleados.Trabajo_ID=trabajos.Trabajo_ID;";
 
         $stmt = $conn->prepare($sql);
@@ -56,11 +49,7 @@ $sql="";
                 $empresario= "<a href=''>Informe de Departamentos</a>";
             }else header("location:../usuario/menu.php");
         }
-    }
-    catch(PDOException $e){
-        echo "No conecta la base";
-        echo "Error: " . $e->getMessage();
-    }
+
     $conn=null;
 }
 

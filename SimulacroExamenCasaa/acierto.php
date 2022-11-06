@@ -57,5 +57,7 @@
         <input type="submit" name="enviar" value="Enviar">
         <?php echo "<br>Número de intentos: ",$_POST['intentos']??'' ?>
     </from>
+
+    
 </body>
 </html>
