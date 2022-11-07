@@ -31,7 +31,7 @@ if (isset($_POST['enviar'])){
             header("location:../administrador/operaciones/ver.php?valor=cliente");
             break;
         case 2:
-        
+            header("location:../administrador/operaciones/añadir.php?valor=cliente");
             break;
         
         case 3:

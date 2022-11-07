@@ -95,7 +95,7 @@ if (isset($_POST['enviar'])){
                     header("location:operaciones/ver.php?valor=cliente");
                     break;
                 case 2:
-                    
+                    header("location:operaciones/añadir.php?valor=cliente");
                     break;
                 case 3:
 
@@ -112,7 +112,7 @@ if (isset($_POST['enviar'])){
                     header("location:operaciones/ver.php?valor=departamento");
                     break;
                 case 2:
-
+                    header("location:operaciones/añadir.php?valor=departamento");
                     break;
                 case 3:
 
@@ -129,7 +129,7 @@ if (isset($_POST['enviar'])){
                     header("location:operaciones/ver.php?valor=empleados");
                     break;
                 case 2:
-
+                    header("location:operaciones/añadir.php?valor=empleados");
                     break;
                 case 3:
 
@@ -146,7 +146,7 @@ if (isset($_POST['enviar'])){
                     header("location:operaciones/ver.php?valor=trabajos");
                     break;
                 case 2:
-
+                    header("location:operaciones/añadir.php?valor=trabajos");
                     break;
                 case 3:
 
@@ -163,7 +163,7 @@ if (isset($_POST['enviar'])){
                     header("location:operaciones/ver.php?valor=ubicacion");
                     break;
                 case 2:
-
+                    header("location:operaciones/añadir.php?valor=ubicacion");
                     break;
                 case 3:
 

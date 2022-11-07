@@ -1,16 +1,14 @@
 <?php
-
+require "../../conexión.php";
 $valor=$_GET['valor'];
 
-$tblDatos = null;
-$servidor = "localhost";
-$usuario ="root";
-$clave ="";
-$sql="";
+
+
+$conn=conectar();
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     try {
-        $conn = new PDO ("mysql:host=$servidor;dbname=pufosa;charset=utf8",$usuario,$clave);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
         $sql= "SELECT * FROM $valor;";
 
 switch($valor){
