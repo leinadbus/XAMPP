@@ -1,0 +1,47 @@
+
+son llamados por el objeto PDO(1 y 2):
+
+1exec(sql) - Todas menos SELECT // devuelve un valor int que coincide con el valor de filas que ha afectado la consulta.
+
+2query(sql) - SELECT // devuelve un conjunto de resultados en formato PDOStatement(hay que tratarlo)Es Fetch o fectALL quien lo llama
+
+		fetch devuelve un array asociativo (en realidad puede devolver un conjunto mixed, varios tipos de array asociativo o indexado)
+			fetch(PDO::fecth_ASSOC) este es por defecto no hace falta escribirlo
+			Es mejor usar WHILE
+		fetchAll devuelve un array, devuelve toda la tabla de resultados
+			Es mejor usar FOREACH
+
+3execute() - Cualquier consulta utiliza la misma funcion SELECT, UPDATE ETC
+	devuelve un booleano, es llamado por el objeto PDO Statement que lo conseguimos con un prepare () en este caso la consulta da igual si es SELECT o no
+		Para recorrer los resultados necesitamos el fect
+			$objeto=prepare(SQL); -> execute($objeto); -> $objeto.fetch();
+
+consultas no preparadas(1y2)
+Consuktas preparadas(3)
+
+--------------------------------------------------------------------------------------------------------*
+
+				$conn= new PDO() {....
+--------------------------------------------------------------------------------------------------------*
+
+PREPARADA
+
+$sql= ("SELECT * FROM Alumnos Where tel= "123");
+
+$stmn = $conn->prepare($sql);
+$stmn->bindParam(....);
+$stmn->execute();
+$result = $stmn-> FetchAll(PDO::FetchASSOC);
+	foreach ($result as...
+
+//Si fuera un INSERT valdria tambien
+
+------------------
+NO PREPARADA
+
+$sql = ("SELECT....");
+$resultado = $conn->query($sql);
+
+	while($fila=$resultado->fecth()){} //Cuando acaba devuelve un False
+
+//Si fuera yb INSERT necesitamos hacer una variable $b=exec() y en vez de un While usariamos un If($b>0)
