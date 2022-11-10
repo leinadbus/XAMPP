@@ -14,6 +14,22 @@ include 'Book.php';*/
 //$publisher1 = new Publisher ("001","Jorjo", "C/ Flores", "666999888", "www.publisher.com");
 
 
+//------------------------------------------------------------------------------------------
+
+
+
+//SI PONEMOS FINAL EN UNA CLASE O EN UN METODO, CORTA LA CADENA DE HERENCIA, NO PUEDE SER HEREDADA
+//UNA CLASE FINAL ABSTRACT CLASS NO TIENE SENTIDO PUES LAS CLASES ABSTRACTAS SON FORZADAS A IMPLEMENTAR MÉTODOS
+//LA INTERFAZ NO TIENE ATRIBUTOS, SIEMPRE SON CONSTANTES
+//LA INTERFAZ SI TIENE HERENCIA MULTIPLE
+
+//SE PUEDEN SOBREESCRIBIR METODOS HEREDADOS
+
+//PHP NO PERMITE CREAR DOS CONSTRUCTORES
+
+//------------------------------------------------------------------------------------------
+
+
 abstract class ReadingMaterial {
     private static $id = 0;
     private $title;
@@ -59,7 +75,7 @@ abstract class ReadingMaterial {
         return $this->price;
     }
 
-    public function set_price () {
+    public function set_price ($pri) {
         $this->price=$pri;
     }
 
