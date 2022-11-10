@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,24 +10,24 @@
         fieldset {
             width: 10%;
         }
-
     </style>
 </head>
+
 <body>
     <h1>Añadir Datos</h1>
 
-<?php
-        require "../../conexión.php";
-        $conn=conectar();
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    <?php
+    require "../../conexión.php";
+    $conn = conectar();
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $valor=$_GET['valor'];
+    $valor = $_GET['valor'];
 
-try {
-switch($valor){
-    case 'cliente':
+    try {
+        switch ($valor) {
+            case 'cliente':
 
-        echo "<form method='post'>
+                echo "<form method='post'>
         <fieldset>
             <legend>Añadir Cliente</legend>
 
@@ -58,14 +59,14 @@ switch($valor){
         <select name='vendedor'>";
 
                 //Recoge los IDs de vendedores para que no introduzca un valor queno existe
-                        $sql= "SELECT empleado_ID FROM empleados;";
+                $sql = "SELECT empleado_ID FROM empleados;";
 
-                        foreach (($conn->query($sql)) as $row){
-                            echo "<option value='",$row['empleado_ID'],"'>",$row['empleado_ID'],"</option>";
-                        }
+                foreach (($conn->query($sql)) as $row) {
+                    echo "<option value='", $row['empleado_ID'], "'>", $row['empleado_ID'], "</option>";
+                }
 
 
-                        echo  "
+                echo  "
        </select>
 
         <label for='Limite_De_Credito'>Limite_De_Credito</label>
@@ -80,12 +81,12 @@ switch($valor){
         
         </form>";
 
-                    if (isset($_POST["btnEnviar"])){
-                        try{
+                if (isset($_POST["btnEnviar"])) {
+                    try {
 
-                            //Recogemos el ID del vendedor que nos ha marcado el usuario
-                    $vendedor=$_REQUEST['vendedor'];
-                    $sql="INSERT INTO cliente (CLIENTE_ID, nombre, Direccion, Ciudad, Estado, CodigoPostal, CodigoDeArea, Telefono, Vendedor_ID, Limite_De_Credito, Comentarios) VALUES (:id, :nom, :dir, :ciu, :est, :cp, :ca, :tel, :ven, :lim, :com) ";
+                        //Recogemos el ID del vendedor que nos ha marcado el usuario
+                        $vendedor = $_REQUEST['vendedor'];
+                        $sql = "INSERT INTO cliente (CLIENTE_ID, nombre, Direccion, Ciudad, Estado, CodigoPostal, CodigoDeArea, Telefono, Vendedor_ID, Limite_De_Credito, Comentarios) VALUES (:id, :nom, :dir, :ciu, :est, :cp, :ca, :tel, :ven, :lim, :com) ";
 
                         $stmt = $conn->prepare($sql);
                         $stmt->bindParam(':id', $_POST['Cliente_ID']);
@@ -100,20 +101,18 @@ switch($valor){
                         $stmt->bindParam(':lim', $_POST['Limite_De_Credito']);
                         $stmt->bindParam(':com', $_POST['Comentarios']);
 
-                        if($stmt->execute()){
+                        if ($stmt->execute()) {
                             echo "Insertado correctamente";
                         }
-                    }catch (PDOException $e){
+                    } catch (PDOException $e) {
 
                         echo 'Algo salió mal escribiendo los datos. </br> Recuerda no introducir un ID de cliente existente';
-                        
-                }
-
                     }
-            break;
-    case 'departamento':
+                }
+                break;
+            case 'departamento':
 
-        echo "  
+                echo "  
         <form method='post'>
     
 
@@ -135,13 +134,13 @@ switch($valor){
         <select name='Ubicacion'>";
 
 
-                        $sql= "SELECT Ubicacion_ID FROM ubicacion;";
+                $sql = "SELECT Ubicacion_ID FROM ubicacion;";
 
-                        foreach (($conn->query($sql)) as $row){
-                            echo "<option value='",$row['Ubicacion_ID'],"'>",$row['Ubicacion_ID'],"</option>";
-                        }
+                foreach (($conn->query($sql)) as $row) {
+                    echo "<option value='", $row['Ubicacion_ID'], "'>", $row['Ubicacion_ID'], "</option>";
+                }
 
-                        echo  "
+                echo  "
 
         </select>
 
@@ -151,34 +150,33 @@ switch($valor){
         </form>";
 
 
-                        if (isset($_POST["btnEnviar"])){
-                            try{
+                if (isset($_POST["btnEnviar"])) {
+                    try {
 
-                        $ubicacion=$_REQUEST['Ubicacion'];
-                        $nombre=$_REQUEST['nombreDep'];
-                        $sql="INSERT INTO departamento (departamento_ID, Nombre, Ubicacion_ID) VALUES (:dep, :nom, :ubi) ";
+                        $ubicacion = $_REQUEST['Ubicacion'];
+                        $nombre = $_REQUEST['nombreDep'];
+                        $sql = "INSERT INTO departamento (departamento_ID, Nombre, Ubicacion_ID) VALUES (:dep, :nom, :ubi) ";
 
-                            $stmt = $conn->prepare($sql);
-                            $stmt->bindParam(':dep', $_POST['departamento_ID']);
-                            $stmt->bindParam(':nom', $nombre);
-                            $stmt->bindParam(':ubi', $ubicacion);
-                            
-
-                            if($stmt->execute()){
-                                echo "Insertado correctamente";
-                                }
-                            }catch (PDOException $e){
-
-                            echo 'Algo salió mal escribiendo los datos. </br> Recuerda no introducir un ID de departamento existente </br>';
-                            }
-
-    }
-            break;
-
-    case 'empleados':
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bindParam(':dep', $_POST['departamento_ID']);
+                        $stmt->bindParam(':nom', $nombre);
+                        $stmt->bindParam(':ubi', $ubicacion);
 
 
-        echo "
+                        if ($stmt->execute()) {
+                            echo "Insertado correctamente";
+                        }
+                    } catch (PDOException $e) {
+
+                        echo 'Algo salió mal escribiendo los datos. </br> Recuerda no introducir un ID de departamento existente </br>';
+                    }
+                }
+                break;
+
+            case 'empleados':
+
+
+                echo "
         <form method='post'>
         <fieldset>
             <legend>Añadir empleados</legend>
@@ -198,13 +196,13 @@ switch($valor){
         <label for='Trabajo_ID'>Trabajo_ID </label>
         <select name='trabajos'>";
 
-                            $sql= "SELECT Trabajo_ID FROM trabajos;";
+                $sql = "SELECT Trabajo_ID FROM trabajos;";
 
-                            foreach (($conn->query($sql)) as $row){
-                                echo "<option value='",$row['Trabajo_ID'],"'>",$row['Trabajo_ID'],"</option>";
-                            }
+                foreach (($conn->query($sql)) as $row) {
+                    echo "<option value='", $row['Trabajo_ID'], "'>", $row['Trabajo_ID'], "</option>";
+                }
 
-        echo  "
+                echo  "
         </select>
         <label for='Jefe_ID'>Jefe_ID </label>
         <input type='text' name='Jefe_ID' >
@@ -221,54 +219,53 @@ switch($valor){
         <label for='Departamento_ID'>Departamento_ID </label>
         <select name='departamentoID'>";
 
-                            $sql= "SELECT departamento_ID FROM departamento;";
+                $sql = "SELECT departamento_ID FROM departamento;";
 
-                            foreach (($conn->query($sql)) as $row){
-                                echo "<option value='",$row['departamento_ID'],"'>",$row['departamento_ID'],"</option>";
-                            }
+                foreach (($conn->query($sql)) as $row) {
+                    echo "<option value='", $row['departamento_ID'], "'>", $row['departamento_ID'], "</option>";
+                }
 
-        echo  "
+                echo  "
         </select>   
         <input type='submit' name='btnEnviar' >     
         </fieldset>
         </form>
         ";
 
-                            if (isset($_POST["btnEnviar"])){
-                                try{
+                if (isset($_POST["btnEnviar"])) {
+                    try {
 
-                            $trabajo=$_REQUEST['trabajos'];
-                            $departamento=$_REQUEST['departamentoID'];
-                            $sql="INSERT INTO empleados (empleado_ID, Apellido, Nombre, Inicial_del_segundo_apellido, Trabajo_ID, Jefe_ID, Fecha_contrato, Salario, Comision, Departamento_ID) 
+                        $trabajo = $_REQUEST['trabajos'];
+                        $departamento = $_REQUEST['departamentoID'];
+                        $sql = "INSERT INTO empleados (empleado_ID, Apellido, Nombre, Inicial_del_segundo_apellido, Trabajo_ID, Jefe_ID, Fecha_contrato, Salario, Comision, Departamento_ID) 
                             VALUES (:emp, :ape, :nom, :ini, :tra, :jef, :fec, :sal, :com, :dep)  ";
 
-                                $stmt = $conn->prepare($sql);
-                                $stmt->bindParam(':emp', $_POST['empleado_ID']);
-                                $stmt->bindParam(':ape', $_POST['Apellido']);
-                                $stmt->bindParam(':nom', $_POST['Nombre']);
-                                $stmt->bindParam(':ini', $_POST['Inicial_del_segundo_apellido']);
-                                $stmt->bindParam(':tra', $trabajo);
-                                $stmt->bindParam(':jef', $_POST['Jefe_ID']);
-                                $stmt->bindParam(':fec', $_POST['Fecha_contrato']);
-                                $stmt->bindParam(':sal', $_POST['Salario']);
-                                $stmt->bindParam(':com', $_POST['Comision']);
-                                $stmt->bindParam(':dep', $departamento);
-                                
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bindParam(':emp', $_POST['empleado_ID']);
+                        $stmt->bindParam(':ape', $_POST['Apellido']);
+                        $stmt->bindParam(':nom', $_POST['Nombre']);
+                        $stmt->bindParam(':ini', $_POST['Inicial_del_segundo_apellido']);
+                        $stmt->bindParam(':tra', $trabajo);
+                        $stmt->bindParam(':jef', $_POST['Jefe_ID']);
+                        $stmt->bindParam(':fec', $_POST['Fecha_contrato']);
+                        $stmt->bindParam(':sal', $_POST['Salario']);
+                        $stmt->bindParam(':com', $_POST['Comision']);
+                        $stmt->bindParam(':dep', $departamento);
 
-                                if($stmt->execute()){
-                                    echo "Insertado correctamente";
-                                    }
-                                }catch (PDOException $e){
 
-                                echo 'Algo salió mal escribiendo los datos. </br> Recuerda no introducir un ID de empleado existente </br>';
-                                }
+                        if ($stmt->execute()) {
+                            echo "Insertado correctamente";
+                        }
+                    } catch (PDOException $e) {
 
-                            }
-            break;
-            
-    case 'trabajos':
+                        echo 'Algo salió mal escribiendo los datos. </br> Recuerda no introducir un ID de empleado existente </br>';
+                    }
+                }
+                break;
 
-        echo "  
+            case 'trabajos':
+
+                echo "  
         <form method='post'>
         <fieldset>
             <legend>Añadir trabajo</legend>
@@ -283,26 +280,25 @@ switch($valor){
         </form>
         ";
 
-                                if (isset($_POST["btnEnviar"])){
-                                    try{
-                                $sql="INSERT INTO trabajos (Trabajo_ID, Funcion) VALUES (:tra, :fun) ";
+                if (isset($_POST["btnEnviar"])) {
+                    try {
+                        $sql = "INSERT INTO trabajos (Trabajo_ID, Funcion) VALUES (:tra, :fun) ";
 
-                                    $stmt = $conn->prepare($sql);
-                                    $stmt->bindParam(':tra', $_POST['Trabajo_ID']);
-                                    $stmt->bindParam(':fun', $_POST['Funcion']);                                  
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bindParam(':tra', $_POST['Trabajo_ID']);
+                        $stmt->bindParam(':fun', $_POST['Funcion']);
 
-                                    if($stmt->execute()){
-                                        echo "Insertado correctamente";
-                                        }
-                                    }catch (PDOException $e){
+                        if ($stmt->execute()) {
+                            echo "Insertado correctamente";
+                        }
+                    } catch (PDOException $e) {
 
-                                    echo 'Algo salió mal escribiendo los datos. </br> Recuerda no introducir un ID de trabajo existente </br>';
-                                    }
-
-}
-break;
-case 'ubicacion':
-    echo "  
+                        echo 'Algo salió mal escribiendo los datos. </br> Recuerda no introducir un ID de trabajo existente </br>';
+                    }
+                }
+                break;
+            case 'ubicacion':
+                echo "  
         <form method='post'>
         <fieldset>
             <legend>Añadir ubicación</legend>
@@ -318,35 +314,32 @@ case 'ubicacion':
         </form>
         ";
 
-                                if (isset($_POST["btnEnviar"])){
-                                    try{
-                                $sql="INSERT INTO ubicacion (Ubicacion_ID, GrupoRegional) VALUES (:ubi, :gru) ";
+                if (isset($_POST["btnEnviar"])) {
+                    try {
+                        $sql = "INSERT INTO ubicacion (Ubicacion_ID, GrupoRegional) VALUES (:ubi, :gru) ";
 
-                                    $stmt = $conn->prepare($sql);
-                                    $stmt->bindParam(':ubi', $_POST['Ubicacion_ID']);
-                                    $stmt->bindParam(':gru', $_POST['GrupoRegional']);                                  
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bindParam(':ubi', $_POST['Ubicacion_ID']);
+                        $stmt->bindParam(':gru', $_POST['GrupoRegional']);
 
-                                    if($stmt->execute()){
-                                        echo "Insertado correctamente";
-                                        }
-                                    }catch (PDOException $e){
+                        if ($stmt->execute()) {
+                            echo "Insertado correctamente";
+                        }
+                    } catch (PDOException $e) {
 
-                                    echo 'Algo salió mal escribiendo los datos. </br> Recuerda no introducir un ID de ubicación existente </br>';
-                                    }
-
-
-}
-break;
-
-    }
-}
-    catch(PDOException $e){
+                        echo 'Algo salió mal escribiendo los datos. </br> Recuerda no introducir un ID de ubicación existente </br>';
+                    }
+                }
+                break;
+        }
+    } catch (PDOException $e) {
         //echo "Error: " . $e->getMessage();
         //echo "<input type='button' onclick='history.back()' name='volver atrás' value='volver atrás'>";
     }
-    $conn=null;
-    
-?>
+    $conn = null;
+
+    ?>
 </body>
 <input type='button' onclick='history.back()' name='volver atrás' value='volver atrás'>
+
 </html>

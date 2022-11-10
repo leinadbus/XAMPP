@@ -6,9 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        fieldset {
-            width: 20%;
+         body {
+            margin: 0 auto;
+    text-align: center;
+    font-size:90%;
+    width: 20%;
+    height: 20%;
         }
+
+    </style>
 
     </style>
 

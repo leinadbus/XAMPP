@@ -6,7 +6,15 @@ $valor=$_GET['valor'];
 
 $conn=conectar();
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+echo "<style>
+table {
+    margin: 0 auto;
+    text-align: center;
+    font-size:90%;
+    width: 20%;
+    height: 20%;
+}
+</style>";
     try {
         
         $sql= "SELECT * FROM $valor;";
@@ -137,6 +145,3 @@ case 'ubicacion':
         echo "Error: " . $e->getMessage();
     }
     $conn=null;
-
-
-?>
