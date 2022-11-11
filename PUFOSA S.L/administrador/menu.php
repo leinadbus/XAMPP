@@ -102,7 +102,7 @@ if (isset($_POST['enviar'])){
                     header("location:operaciones/añadir.php?valor=cliente");
                     break;
                 case 3:
-                    
+                    header("location:operaciones/editar.php?valor=cliente");
                     break;
                 case 4:
                     header("location:operaciones/borrar.php?valor=cliente");
