@@ -33,7 +33,8 @@
 
     $datosCorrectos = false;
     $valor = $_GET['valor'];
-
+    $user=$_GET['user'];
+    $contraseña=$_GET['contraseña'];
     
         switch ($valor) {
 
@@ -129,7 +130,8 @@
                         ECHO "ATENCIÓN: NO HAS INTRODUCIDO UN ID DE VENDEDOR VÁLIDO Y SE ESTÁ MANTENIENDO EL EXISTENTE";
                     }
                     $conn = null;
-                } else 
+                } 
+                
                 break;
                 case 'departamento':
                     if (isset($_POST['btnEnviar'])) {
@@ -157,7 +159,7 @@
                     ?>
                     <?php
                     
-                    $html = "";
+                   
                     if (!$datosCorrectos) {
                         $html = "<form action='' method='post'>";
                         $html .= "<fieldset><legend>Código CLIENTE a modificar</legend>";
@@ -176,7 +178,7 @@
                         
                     }
                     echo $html;
-                    
+                  
                     ?>
                     <?php
                     if (isset($_POST['btnModificar'])) {
@@ -327,10 +329,11 @@
                             $html .="<input type='hidden' name='hiddenCLIENTE' value='" . $reg['Trabajo_ID'] . "'disabled>" ;
                             $html .= "Funcion: <input type='text' name='Funcion' value='" . $reg['Funcion'] . "'disabled><br><br/>";
                             $html .= "</fieldset></form>";
+                            $html .= "No tienes permisos para modificar esta BD";
                             
                         }
                         echo $html;
-                        echo "No tienes permisos para modificar esta BD";
+                        
                          
                         break;
 
@@ -374,15 +377,16 @@
                             $html .="<input type='hidden' name='hiddenCLIENTE' value='" . $reg['Ubicacion_ID'] . "'disabled>" ;
                             $html .= "Funcion: <input type='text' name='Funcion' value='" . $reg['GrupoRegional'] . "'disabled><br><br/>";
                             $html .= "</fieldset></form>";
+                            $html .= "No tienes permisos para modificar esta BD";
                             
                         }
                         echo $html;
-                        echo "No tienes permisos para modificar esta BD";
+                        
                          
                         break;
     }
-
     ?>
+    <a href='../menu.php?user=<?=$user?>&contraseña=<?=$contraseña?>'>Inicio</a>
 </body>
 
 </html>

@@ -1,7 +1,8 @@
 <?php
 require "../../conexión.php";
 $valor=$_GET['valor'];
-
+$user=$_GET['user'];
+$contraseña=$_GET['contraseña'];
 
 
 $conn=conectar();
@@ -139,9 +140,12 @@ case 'ubicacion':
 
             break;
     }
+    echo "<a href='../menu.php?user=$user&contraseña=$contraseña'>Inicio</a>";
+
     echo "<input type='button' onclick='history.back()' name='volver atrás' value='volver atrás'>";
     }
     catch(PDOException $e){
         echo "Error: " . $e->getMessage();
     }
     $conn=null;
+

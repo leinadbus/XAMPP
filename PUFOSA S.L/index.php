@@ -12,7 +12,7 @@
     font-size:90%;
     width: 20%;
     height: 20%;
-        }
+            }
 
     </style>
 
@@ -20,7 +20,7 @@
 
 </head>
 <body>
-    <form method="post" action="administrador/menu.php">
+    <form method="get" action="administrador/menu.php">
         <fieldset>
             <legend>Inicio Sesión</legend>
 <label for="user">Usuario</label>

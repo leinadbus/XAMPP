@@ -34,6 +34,8 @@
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $valor = $_GET['valor'];
+    $user=$_GET['user'];
+    $contraseña=$_GET['contraseña'];
 
     try {
         switch ($valor) {
@@ -252,7 +254,7 @@
     }
     $conn = null;
     ?>
-
+<a href='../menu.php?user=<?=$user?>&contraseña=<?=$contraseña?>'>Inicio</a>
 <input type='button' onclick='history.back()' name='volver atrás' value='volver atrás'>
 
 </body>

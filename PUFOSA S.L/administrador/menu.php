@@ -21,8 +21,8 @@ require "../conexión.php";
 $conn=conectar();
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$user=$_POST['user'];
-$contraseña=$_POST['contraseña'];
+$user=$_GET['user'];
+$contraseña=$_GET['contraseña'];
 $empresario='';
 
 if ($contraseña != 1111){
@@ -83,6 +83,9 @@ if ($contraseña != 1111){
     </select>
     </fieldset>
 
+                                                                <input type="hidden" name="user" value="<?=$user?>">
+                                                                <input type="hidden" name="contraseña" value="<?=$contraseña?>">
+
     <p><?php echo $empresario ?></p>
 
 <p><input type="submit" name="enviar" value="Enviar datos"></p>
@@ -91,21 +94,21 @@ if ($contraseña != 1111){
  <?php
  
 if (isset($_POST['enviar'])){
-    
+    $user=$_POST['user'];
     switch($_POST["tabla"]){
         case 5:
             switch($_POST["accion"]){
                 case 1:
-                    header("location:operaciones/ver.php?valor=cliente");
+                    header("location:operaciones/ver.php?valor=cliente&user=$user&contraseña=$contraseña");
                     break;
                 case 2:
-                    header("location:operaciones/añadir.php?valor=cliente");
+                    header("location:operaciones/añadir.php?valor=cliente&user=$user&contraseña=$contraseña");
                     break;
                 case 3:
-                    header("location:operaciones/editar.php?valor=cliente");
+                    header("location:operaciones/editar.php?valor=cliente&user=$user&contraseña=$contraseña");
                     break;
                 case 4:
-                    header("location:operaciones/borrar.php?valor=cliente");
+                    header("location:operaciones/borrar.php?valor=cliente&user=$user&contraseña=$contraseña");
                     break;
 
             }
@@ -113,16 +116,16 @@ if (isset($_POST['enviar'])){
         case 6:
             switch($_POST["accion"]){
                 case 1:
-                    header("location:operaciones/ver.php?valor=departamento");
+                    header("location:operaciones/ver.php?valor=departamento&user=$user&contraseña=$contraseña");
                     break;
                 case 2:
-                    header("location:operaciones/añadir.php?valor=departamento");
+                    header("location:operaciones/añadir.php?valor=departamento&user=$user&contraseña=$contraseña");
                     break;
                 case 3:
-                    header("location:operaciones/editar.php?valor=departamento");
+                    header("location:operaciones/editar.php?valor=departamento&user=$user&contraseña=$contraseña");
                     break;
                 case 4:
-                    header("location:operaciones/borrar.php?valor=departamento");
+                    header("location:operaciones/borrar.php?valor=departamento&user=$user&contraseña=$contraseña");
                     break;
 
             }
@@ -130,16 +133,16 @@ if (isset($_POST['enviar'])){
         case 7:
             switch($_POST["accion"]){
                 case 1:
-                    header("location:operaciones/ver.php?valor=empleados");
+                    header("location:operaciones/ver.php?valor=empleados&user=$user&contraseña=$contraseña");
                     break;
                 case 2:
-                    header("location:operaciones/añadir.php?valor=empleados");
+                    header("location:operaciones/añadir.php?valor=empleados&user=$user&contraseña=$contraseña");
                     break;
                 case 3:
-                    header("location:operaciones/editar.php?valor=empleados");
+                    header("location:operaciones/editar.php?valor=empleados&user=$user&contraseña=$contraseña");
                     break;
                 case 4:
-                    header("location:operaciones/borrar.php?valor=empleados");
+                    header("location:operaciones/borrar.php?valor=empleados&user=$user&contraseña=$contraseña");
                     break;
 
             }
@@ -147,16 +150,16 @@ if (isset($_POST['enviar'])){
         case 8:
             switch($_POST["accion"]){
                 case 1:
-                    header("location:operaciones/ver.php?valor=trabajos");
+                    header("location:operaciones/ver.php?valor=trabajos&user=$user&contraseña=$contraseña");
                     break;
                 case 2:
-                    header("location:operaciones/añadir.php?valor=trabajos");
+                    header("location:operaciones/añadir.php?valor=trabajos&user=$user&contraseña=$contraseña");
                     break;
                 case 3:
-                    header("location:operaciones/editar.php?valor=trabajos");
+                    header("location:operaciones/editar.php?valor=trabajos&user=$user&contraseña=$contraseña");
                     break;
                 case 4:
-                    header("location:operaciones/borrar.php?valor=trabajos");
+                    header("location:operaciones/borrar.php?valor=trabajos&user=$user&contraseña=$contraseña");
                     break;
 
             }
@@ -164,16 +167,16 @@ if (isset($_POST['enviar'])){
         case 9:
             switch($_POST["accion"]){
                 case 1:
-                    header("location:operaciones/ver.php?valor=ubicacion");
+                    header("location:operaciones/ver.php?valor=ubicacion&user=$user&contraseña=$contraseña");
                     break;
                 case 2:
-                    header("location:operaciones/añadir.php?valor=ubicacion");
+                    header("location:operaciones/añadir.php?valor=ubicacion&user=$user&contraseña=$contraseña");
                     break;
                 case 3:
-                    header("location:operaciones/editar.php?valor=ubicacion");
+                    header("location:operaciones/editar.php?valor=ubicacion&user=$user&contraseña=$contraseña");
                     break;
                 case 4:
-                    header("location:operaciones/borrar.php?valor=ubicacion");
+                    header("location:operaciones/borrar.php?valor=ubicacion&user=$user&contraseña=$contraseña");
                     break;
 
             }
@@ -183,5 +186,6 @@ if (isset($_POST['enviar'])){
     } 
 }
 ?>
+
 </body>
 </html>
