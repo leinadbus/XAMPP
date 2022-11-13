@@ -49,6 +49,7 @@
                 <legend>Datos del cliente a borrar</legend>
                 Id de cliente:
                 <input type='text' name='idcliente' required>
+
                 <input type='submit' name='btnEnviar' value='Borrar'>
             </fieldset>
         </form>
@@ -88,6 +89,7 @@
                 <legend>Datos del departamento a borrar</legend>
                 ID de departamento:
                 <input type='text' name='departamentoid' required>
+
                 <input type='submit' name='btnEnviar' value='Borrar'>
             </fieldset>
         </form>
@@ -128,6 +130,7 @@
                     <legend>Datos del departamento a borrar</legend>
                     ID de empleado:
                     <input type='text' name='empleadoid' required>
+
                     <input type='submit' name='btnEnviar' value='Borrar'>
                 </fieldset>
             </form>
@@ -168,6 +171,7 @@
                         <legend>Datos del trabajo a borrar</legend>
                         ID de trabajo:
                         <input type='text' name='trabajoid' required>
+
                         <input type='submit' name='btnEnviar' value='Borrar'>
                     </fieldset>
                 </form>
@@ -188,14 +192,10 @@
                             $stmt->bindParam(':cod', $trabajoid);
                             $stmt->execute();
                             echo "Trabajo eliminado correctamente de la BD";
-                            //$msg="El alumn@ se ha eliminado correctamente";
-                            //echo "<p><a href='borrar.html'>Borrar otro alumno</a></p>";
-                            //echo "<p><a href='index.html'>Volver a inicio</a></p>";
+                     
                         } else {
                             echo "El trabajo a borrar NO existe en la BD";
-                            // $msg="El alumn@ a borrar NO existe en la BD";
-                            // echo "<p><a href='borrar.html'>Borrar otro alumno</a></p>";
-                            // echo "<p><a href='index.html'>Volver a inicio</a></p>";
+                 
                         }
                     } catch (PDOException $e) {
                         //echo "Error: " . $e->getMessage();
@@ -212,6 +212,7 @@
                         <legend>Datos de la ubicación a borrar</legend>
                         ID de ubicación:
                         <input type='text' name='ubicacionid' required>
+
                         <input type='submit' name='btnEnviar' value='Borrar'>
                     </fieldset>
                 </form>
@@ -232,14 +233,10 @@
                             $stmt->bindParam(':cod', $ubicacionid);
                             $stmt->execute();
                             echo "Ubicación eliminado correctamente de la BD";
-                            //$msg="El alumn@ se ha eliminado correctamente";
-                            //echo "<p><a href='borrar.html'>Borrar otro alumno</a></p>";
-                            //echo "<p><a href='index.html'>Volver a inicio</a></p>";
+                           
                         } else {
                             echo "La ubicación a borrar NO existe en la BD";
-                            // $msg="El alumn@ a borrar NO existe en la BD";
-                            // echo "<p><a href='borrar.html'>Borrar otro alumno</a></p>";
-                            // echo "<p><a href='index.html'>Volver a inicio</a></p>";
+                         
                         }
                     } catch (PDOException $e) {
                         //echo "Error: " . $e->getMessage();
@@ -248,8 +245,7 @@
                 }
         }
     } catch (PDOException $e) {
-        //echo "Error: " . $e->getMessage();
-        //echo "<input type='button' onclick='history.back()' name='volver atrás' value='volver atrás'>";
+  
     }
     $conn = null;
     ?>
