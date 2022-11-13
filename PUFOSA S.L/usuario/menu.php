@@ -18,6 +18,8 @@
 </head>
 <body>
     <h1>User</h1>
+    <a href="../index.php">Cerrar Sesión</a>
+<p></p>
     <form method="post" >
 
     <fieldset>
@@ -34,22 +36,24 @@
 </form>
 
 <?php 
+$user=$_GET['user'];
+$contraseña=$_GET['contraseña'];
 
 if (isset($_POST['enviar'])){
     switch($_POST["accion"]){
         case 1:
-            header("location:../administrador/operaciones/ver.php?valor=cliente");
+            header("location:../administrador/operaciones/ver.php?valor=cliente&user=$user&contraseña=$contraseña");
             break;
         case 2:
-            header("location:../administrador/operaciones/añadir.php?valor=cliente");
+            header("location:../administrador/operaciones/añadir.php?valor=cliente&user=$user&contraseña=$contraseña");
             break;
         
         case 3:
-
+            header("location:../administrador/operaciones/editar.php?valor=cliente&user=$user&contraseña=$contraseña&user=$user&contraseña=$contraseña");
             break;
         
         case 4:
-            header("location:../administrador/operaciones/borrar.php?valor=cliente");
+            header("location:../administrador/operaciones/borrar.php?valor=cliente&user=$user&contraseña=$contraseña");
             break;
     }
 }

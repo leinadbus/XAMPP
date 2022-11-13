@@ -387,6 +387,7 @@
     }
     ?>
     <a href='../menu.php?user=<?=$user?>&contraseña=<?=$contraseña?>'>Inicio</a>
+    <input type='button' onclick='history.back()' name='volver atrás' value='volver atrás'>
 </body>
 
 </html>

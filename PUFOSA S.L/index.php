@@ -8,12 +8,38 @@
     <style>
          body {
             margin: 0 auto;
-    text-align: center;
+    text-align: left;
     font-size:90%;
     width: 20%;
     height: 20%;
             }
+            label{
+  display: inline-block;
+  width: 80px;
+}
 
+form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form input {
+  width: 90%;
+  height: 30px;
+  margin: 0.5rem;
+}
+
+form button {
+  padding: 0.5em 1em;
+  border: none;
+  background: rgb(100, 200, 255);
+  cursor: pointer;
+}
     </style>
 
     </style>

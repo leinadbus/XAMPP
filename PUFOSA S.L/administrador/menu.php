@@ -50,8 +50,8 @@ if ($contraseña != 1111){
             }else if ($num['Funcion']=="PRESIDENT"){
                 
                 echo "<p>Bienvenid@ Presidente/a</p>";
-                $empresario= "<a href=''>Informe de Departamentos</a>";
-            }else header("location:../usuario/menu.php");
+                $empresario= "<a href='operaciones/informeP.php?user=$user&contraseña=$contraseña'>Informe de Departamentos</a>";
+            }else header("location:../usuario/menu.php?user=$user&contraseña=$contraseña");
         }
 
     $conn=null;
@@ -61,6 +61,8 @@ if ($contraseña != 1111){
 </head>
 <body>
     <h1>PUFOSA S.L.</h1>
+    <a href="../index.php">Cerrar Sesión</a>
+<p></p>
     <form method="post" >
 
     <fieldset>
