@@ -36,10 +36,13 @@
     $valor = $_GET['valor'];
     $user=$_GET['user'];
     $contraseña=$_GET['contraseña'];
-
+//-----------------SWITCH VALOR PARA MOSTRAR FORMULARIOS-----------------
+//***************Es importante que $valor tenga el nombre de las tablas****************
     try {
         switch ($valor) {
             case 'cliente':
+//CLIENTE ES SUSCEPTIBLE DE SER BORRADO SIN PROBLEMA
+
                 echo "
             <form method='post'>
             <fieldset>
@@ -66,14 +69,10 @@
                             $stmt->bindParam(':cod', $idcliente);
                             $stmt->execute();
                             echo "Cliente eliminado correctamente de la BD";
-                            //$msg="El alumn@ se ha eliminado correctamente";
-                            //echo "<p><a href='borrar.html'>Borrar otro alumno</a></p>";
-                            //echo "<p><a href='index.html'>Volver a inicio</a></p>";
+                      
                         } else {
                             echo "El cliente a borrar NO existe en la BD";
-                            // $msg="El alumn@ a borrar NO existe en la BD";
-                            // echo "<p><a href='borrar.html'>Borrar otro alumno</a></p>";
-                            // echo "<p><a href='index.html'>Volver a inicio</a></p>";
+        
                         }
                     } catch (PDOException $e) {
                         echo "Error: " . $e->getMessage();
@@ -81,6 +80,8 @@
                 }
                 break;
             case 'departamento':
+        //DEPARTAMENTO NO ES SUSCEPTIBLE DE SER BORRADO
+        //**********Departamento solo dejará borrar si no es usado en otras tablas ************* */
                 echo "
             <form method='post'>
             <fieldset>
@@ -107,14 +108,10 @@
                             $stmt->bindParam(':cod', $departamentoid);
                             $stmt->execute();
                             echo "Departamento eliminado correctamente de la BD";
-                            //$msg="El alumn@ se ha eliminado correctamente";
-                            //echo "<p><a href='borrar.html'>Borrar otro alumno</a></p>";
-                            //echo "<p><a href='index.html'>Volver a inicio</a></p>";
+
                         } else {
                             echo "El departamento a borrar NO existe en la BD";
-                            // $msg="El alumn@ a borrar NO existe en la BD";
-                            // echo "<p><a href='borrar.html'>Borrar otro alumno</a></p>";
-                            // echo "<p><a href='index.html'>Volver a inicio</a></p>";
+
                         }
                     } catch (PDOException $e) {
                         //echo "Error: " . $e->getMessage();
@@ -123,6 +120,8 @@
                 }
                 break;
             case 'empleados':
+                //EMPLEADOS NO ES SUSCEPTIBLE DE SER BORRADO
+        //**********Empleados solo dejará borrar si no es usado en otras tablas ************* */
                 echo "
                 <form method='post'>
                 <fieldset>
@@ -149,22 +148,20 @@
                             $stmt->bindParam(':cod', $empleadoid);
                             $stmt->execute();
                             echo "Empleado eliminado correctamente de la BD";
-                            //$msg="El alumn@ se ha eliminado correctamente";
-                            //echo "<p><a href='borrar.html'>Borrar otro alumno</a></p>";
-                            //echo "<p><a href='index.html'>Volver a inicio</a></p>";
+
                         } else {
                             echo "El empleado a borrar NO existe en la BD";
-                            // $msg="El alumn@ a borrar NO existe en la BD";
-                            // echo "<p><a href='borrar.html'>Borrar otro alumno</a></p>";
-                            // echo "<p><a href='index.html'>Volver a inicio</a></p>";
+
                         }
                     } catch (PDOException $e) {
-                        //echo "Error: " . $e->getMessage();
+
                         echo "No tienes permisos para borrar este valor de la tabla Empleados";
                     }
                 }
                 break;
             case 'trabajos':
+                //TRABAJOS NO ES SUSCEPTIBLE DE SER BORRADO
+        //**********Trabajos solo dejará borrar si no es usado en otras tablas ************* */
                 echo "
                     <form method='post'>
                     <fieldset>
@@ -207,6 +204,8 @@
                 }
                 break;
             case 'ubicacion':
+                //UBICACIÓN NO ES SUSCEPTIBLE DE SER BORRADO
+        //**********Ubicacion solo dejará borrar si no es usado en otras tablas ************* */
                 echo "
                     <form method='post'>
                     <fieldset>

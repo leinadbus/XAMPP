@@ -35,7 +35,8 @@
     $valor = $_GET['valor'];
     $user=$_GET['user'];
     $contraseña=$_GET['contraseña'];
-
+//-----------------SWITCH VALOR PARA MOSTRAR FORMULARIOS-----------------
+//***************Es importante que $valor tenga el nombre de las tablas****************
     try {
         switch ($valor) {
             case 'cliente':
@@ -71,7 +72,7 @@
         <label for='Vendedor'>Vendedor</label>
         <select name='vendedor'>";
 
-                //Recoge los IDs de vendedores para que no introduzca un valor queno existe
+                //Recoge los IDs de vendedores para que no introduzca un valor INNEXISTENTE
                 $sql = "SELECT empleado_ID FROM empleados;";
 
                 foreach (($conn->query($sql)) as $row) {
@@ -146,7 +147,7 @@
         <label for='ubicacion'>Ubicacion</label>
         <select name='Ubicacion'>";
 
-
+                //Recoge los IDs de vendedores para que no introduzca un valor INNEXISTENTE
                 $sql = "SELECT Ubicacion_ID FROM ubicacion;";
 
                 foreach (($conn->query($sql)) as $row) {
@@ -208,7 +209,7 @@
 
         <label for='Trabajo_ID'>Trabajo_ID </label>
         <select name='trabajos'>";
-
+                //Recoge los IDs de vendedores para que no introduzca un valor INNEXISTENTE
                 $sql = "SELECT Trabajo_ID FROM trabajos;";
 
                 foreach (($conn->query($sql)) as $row) {
@@ -231,7 +232,7 @@
 
         <label for='Departamento_ID'>Departamento_ID </label>
         <select name='departamentoID'>";
-
+                //Recoge los IDs de vendedores para que no introduzca un valor INNEXISTENTE
                 $sql = "SELECT departamento_ID FROM departamento;";
 
                 foreach (($conn->query($sql)) as $row) {

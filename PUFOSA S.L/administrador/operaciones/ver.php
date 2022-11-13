@@ -17,8 +17,11 @@ table {
 }
 </style>";
     try {
-        
+        //consulta genérica que recoge valor y lo implanta 
+        //***************Es importante que $valor tenga el nombre de las tablas****************
         $sql= "SELECT * FROM $valor;";
+
+//----------------- SWITCH DE VALOR PARA MOSTRAR FORMULARIOS-----------------
 
 switch($valor){
 case 'cliente':

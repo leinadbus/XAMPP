@@ -35,9 +35,10 @@
     $valor = $_GET['valor'];
     $user=$_GET['user'];
     $contraseña=$_GET['contraseña'];
-    
+    //-----------------SWITCH VALOR PARA MOSTRAR FORMULARIOS-----------------
+//***************Es importante que $valor tenga el nombre de las tablas****************
         switch ($valor) {
-
+//CLIENTE deja cambiar todos los datos menos el ID 
             case 'cliente':
                 if (isset($_POST['btnEnviar'])) {
                 
@@ -127,6 +128,7 @@
                         if($stms->execute())
                             ECHO  "El cliente se ha Actualizado correctamente";
                     } catch (PDOException $e) {
+            //Si no se introduce ID vendedor válido el código lo mantiene como el existente
                         ECHO "ATENCIÓN: NO HAS INTRODUCIDO UN ID DE VENDEDOR VÁLIDO Y SE ESTÁ MANTENIENDO EL EXISTENTE";
                     }
                     $conn = null;
@@ -135,7 +137,7 @@
                 break;
                 case 'departamento':
                     if (isset($_POST['btnEnviar'])) {
-                
+                //DEPARTAMENTO deja cambiar todos los datos menos el ID 
                         try {
                             $conn = conectar();
                             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -199,13 +201,14 @@
                             if($stms->execute())
                                 ECHO  "El departamento se ha Actualizado correctamente";
                         } catch (PDOException $e) {
+                        //Si no se introduce ID de ubicación cálida, departamento mantiene el existente por defecto
                             ECHO "ATENCIÓN: NO HAS INTRODUCIDO UNA UBICACIÓN VÁLIDA Y SE ESTÁ MANTENIENDO LA YA EXISTENTE";
-                            //echo "Error: " . $e->getMessage();
                         }
                         $conn = null;
                     } 
                     break;
                 case 'empleados':
+                    //EMPLEADO solamente deja cambiar algunos datos no críticos para el trabajo
                     if (isset($_POST['btnEnviar'])) {
                 
                         try {
@@ -240,6 +243,7 @@
                         $html .= "</fieldset></form>";
                     } else {
                         
+                    //Disabled nos permite enseñar los datos pero no cambiarlos NI RECOGERLOS
                         $html = "<form action='' method='post'>";
                         $html .="<fieldset><legend>Datos actuales del EMPLEADO a modificar</legend>" ;
                         $html .="empleado_ID: <input type='hidden' name='hiddenCLIENTE' value='" . $reg['empleado_ID'] . "'><br><br/>                    " ;
@@ -290,6 +294,7 @@
                     break;
 
                     case 'trabajos':
+                    //****************Trabajos NO PERMITE CAMBIAR DATOS POR SEGURIDAD******************
                         if (isset($_POST['btnEnviar'])) {
                 
                             try {
@@ -315,7 +320,6 @@
                         ?>
                         <?php
                         
-                        $html = "";
                         if (!$datosCorrectos) {
                             $html = "<form action='' method='post'>";
                             $html .= "<fieldset><legend>Código TRABAJO a modificar</legend>";
@@ -338,6 +342,7 @@
                         break;
 
                         case 'ubicacion';
+                        //****************UBICACION NO PERMITE CAMBIAR DATOS POR SEGURIDAD******************
                         if (isset($_POST['btnEnviar'])) {
                 
                             try {

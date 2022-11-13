@@ -25,11 +25,13 @@ $user=$_GET['user'];
 $contraseña=$_GET['contraseña'];
 $empresario='';
 
+//-----------------COMPROBACIÓN DEL LOGIN-----------------
+
 if ($contraseña != 1111){
     header("location:../index.php?msg=contraseña incorrecta");
 }else{
 
-    
+    //Esta consulta comprueba la existencia y el rol del empleado, si el empleado no existe la consulta devuelve null, lo que nos da el error
         $sql = "SELECT Funcion FROM empleados, trabajos where empleados.empleado_ID = '$user' AND empleados.Trabajo_ID=trabajos.Trabajo_ID;";
 
         $stmt = $conn->prepare($sql);
@@ -40,7 +42,7 @@ if ($contraseña != 1111){
             header("location:../index.php?msg=Usuario incorrecto");
            
         }else {
-            
+            //Según el roll, el valor que guardamos determina la opciones que se nos muestran en esta página
             $result=$conn->query($sql);
             $num=$result->fetch();
  
@@ -48,7 +50,7 @@ if ($contraseña != 1111){
                 
                 echo "<p>Bienvenid@ Administrador/a</p>";
             }else if ($num['Funcion']=="PRESIDENT"){
-                
+                //Si el roll es empresario, se nos mostrará la opción del informe de departamento
                 echo "<p>Bienvenid@ Presidente/a</p>";
                 $empresario= "<a href='operaciones/informeP.php?user=$user&contraseña=$contraseña'>Informe de Departamentos</a>";
             }else header("location:../usuario/menu.php?user=$user&contraseña=$contraseña");
@@ -61,8 +63,10 @@ if ($contraseña != 1111){
 </head>
 <body>
     <h1>PUFOSA S.L.</h1>
+    <!-- El html contempla cerrar sesión y dos selects que nos llevan a donde le pidamos con sus correspondientes valores de login -->
     <a href="../index.php">Cerrar Sesión</a>
 <p></p>
+
     <form method="post" >
 
     <fieldset>
@@ -85,8 +89,9 @@ if ($contraseña != 1111){
     </select>
     </fieldset>
 
-                                                                <input type="hidden" name="user" value="<?=$user?>">
-                                                                <input type="hidden" name="contraseña" value="<?=$contraseña?>">
+    <!--Recogemos las variables de login para poder transportarlas por los documentos -->
+    <input type="hidden" name="user" value="<?=$user?>">
+    <input type="hidden" name="contraseña" value="<?=$contraseña?>">
 
     <p><?php echo $empresario ?></p>
 
@@ -95,6 +100,13 @@ if ($contraseña != 1111){
 
  <?php
  
+//-----------------COMPROBACIÓN DE SELECCIÓN-----------------
+
+//Dependiendo de la elección del usuario, se mandan los valores con los que navegamos en las siguientes páginas
+//valor determina que partes de código se ejecutan en dichos archivos y user y contraseña los mandamos para dos acciones:
+//  - Para poder crear un botón de Inicio que nos transporta a esta misma página con los mismos privilegios
+//  - Para poder crear en el Log los datos de escritura según el usuario.
+
 if (isset($_POST['enviar'])){
     $user=$_POST['user'];
     switch($_POST["tabla"]){

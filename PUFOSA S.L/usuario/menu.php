@@ -18,6 +18,7 @@
 </head>
 <body>
     <h1>User</h1>
+<!-- MENU USER SOLO REDIRIGE A LOS MIMOS ARCHIVOS PERO CORTADOS POR VALOR, POR LO QUE SOLO SE MUESTRAN LAS OPCIONES DE UNA ÚNICA TABLA -->
     <a href="../index.php">Cerrar Sesión</a>
 <p></p>
     <form method="post" >
