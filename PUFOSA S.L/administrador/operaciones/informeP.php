@@ -15,10 +15,19 @@ table {
     width: 20%;
     height: 20%;
 }
+li{
+    text-decoration:none;
+    display:inline-block;
+    padding:5px 10px;
+}
 </style>";
    //INFORME MUESTRA UNA CONSULTA SELECT A LA BASE DE DATOS
         
-        $sql= "SELECT ubicacion.GrupoRegional, departamento.Nombre , COUNT(empleados.empleado_ID)AS NumeroEmpleados , MAX(empleados.Salario) AS SalarioMaximo, MIN(empleados.Salario) AS SalarioMinimo, AVG(empleados.Salario) AS SalarioMedio FROM ubicacion,departamento,empleados WHERE ubicacion.Ubicacion_ID=departamento.Ubicacion_ID AND departamento.departamento_ID = empleados.Departamento_ID GROUP BY ubicacion.GrupoRegional, departamento.Nombre;";
+        $sql= "SELECT ubicacion.GrupoRegional, departamento.Nombre , COUNT(empleados.empleado_ID)AS NumeroEmpleados , 
+        MAX(empleados.Salario) AS SalarioMaximo, MIN(empleados.Salario) AS SalarioMinimo, AVG(empleados.Salario) AS SalarioMedio 
+        FROM ubicacion,departamento,empleados WHERE ubicacion.Ubicacion_ID=departamento.Ubicacion_ID AND 
+        departamento.departamento_ID = empleados.Departamento_ID GROUP BY ubicacion.GrupoRegional, departamento.Nombre;";
+
         echo "<table border=1>";
         echo "<th>Grupo Regional</th>
          <th>Departamento</th>
@@ -42,7 +51,11 @@ table {
            " ;
         }
         echo "</table>";
-        echo "<a href='../menu.php?user=$user&contraseña=$contraseña'>Inicio</a>";
+        echo "<ul>
+    <li><input type='button' onclick='history.back()' name='volver atrás' value='volver atrás'></li>
+    <li><a href='../menu.php?user=$user&contraseña=$contraseña'>Inicio</a></li>
+</ul>";
+        //echo "<a href='../menu.php?user=$user&contraseña=$contraseña'>Inicio</a>";
 //SELECT ubicacion.GrupoRegional, departamento.Nombre , COUNT(empleados.empleado_ID)AS NumeroEmpleados , MAX(empleados.Salario) AS SalarioMaximo, MIN(empleados.Salario) AS SalarioMinimo, AVG(empleados.Salario) AS SalarioMedio FROM ubicacion,departamento,empleados WHERE ubicacion.Ubicacion_ID=departamento.Ubicacion_ID AND departamento.departamento_ID = empleados.Departamento_ID GROUP BY ubicacion.GrupoRegional, departamento.Nombre
 
 ?>

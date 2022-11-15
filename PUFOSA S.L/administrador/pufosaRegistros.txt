@@ -1,0 +1,8 @@
+HOLA--7505Usuario: 7505 ha añadido un cliente con ID: 6 el día November 15, 2022, 7:33 pm 
+ Usuario: 7505 ha añadido un cliente con ID: 7 el día %PM %15 %22 
+ Usuario: 7505 ha añadido un cliente con ID: 3 el día 15 Nov 22 
+ Usuario: 7505 ha borrado un cliente con ID: 3 el día 15 Nov 22 
+ Usuario: 7505 ha modificado un cliente con ID: 2 el día 15 Nov 22 
+ Usuario: 7839 ha añadido un cliente con ID: 9 el día 15 Nov 22 
+ Usuario: 7369 ha añadido un cliente con ID: 8 el día 15 Nov 22 
+ 

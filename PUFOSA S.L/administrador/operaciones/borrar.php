@@ -20,6 +20,11 @@
     width: 20%;
     height: 20%;
         }
+        li{
+            text-decoration:none;
+            display:inline-block;
+            padding:5px 10px;
+    }
 
     </style>
 </head>
@@ -70,8 +75,16 @@
                             $stmt->bindParam(':cod', $idcliente);
                             $stmt->execute();
                             echo "Cliente eliminado correctamente de la BD";
-                      
-                        } else {
+                            
+                            $registro = fopen("../pufosaRegistros.txt", "a+b");
+                            if (!$registro) {
+                                echo "error al abrir el fichero";
+                            } else {
+                                $sentenciaEscritura= "Usuario: ".$user." ha borrado un cliente con ID: ". $idcliente. " el día ".date("d M y") . " \n ";
+                                fwrite($registro, $sentenciaEscritura );    
+                                rewind($registro);  
+                            } 
+                    }else {
                             echo "El cliente a borrar NO existe en la BD";
         
                         }
@@ -249,8 +262,10 @@
     }
     $conn = null;
     ?>
-<a href='../menu.php?user=<?=$user?>&contraseña=<?=$contraseña?>'>Inicio</a>
-<input type='button' onclick='history.back()' name='volver atrás' value='volver atrás'>
+<ul>
+    <li><input type='button' onclick='history.back()' name='volver atrás' value='volver atrás'></li>
+    <li><a href='../menu.php?user=<?=$user?>&contraseña=<?=$contraseña?>'>Inicio</a></li>
+</ul>
 
 </body>
 

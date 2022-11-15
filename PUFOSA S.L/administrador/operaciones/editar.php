@@ -21,6 +21,11 @@
             width: 20%;
             height: 20%;
         }
+        li{
+            text-decoration:none;
+            display:inline-block;
+            padding:5px 10px;
+    }
     </style>
 </head>
 
@@ -127,6 +132,14 @@
                             $stms->bindParam(':com', $Comentarios);
                         if($stms->execute())
                             ECHO  "El cliente se ha Actualizado correctamente";
+                            $registro = fopen("../pufosaRegistros.txt", "a+b");
+                            if (!$registro) {
+                                echo "error al abrir el fichero";
+                            } else {
+                                $sentenciaEscritura= "Usuario: ".$user." ha modificado un cliente con ID: ". $clienteID. " el día ".date("d M y") . " \n ";
+                                fwrite($registro, $sentenciaEscritura );    
+                                rewind($registro);  
+                            } 
                     } catch (PDOException $e) {
             //Si no se introduce ID vendedor válido el código lo mantiene como el existente
                         ECHO "ATENCIÓN: NO HAS INTRODUCIDO UN ID DE VENDEDOR VÁLIDO Y SE ESTÁ MANTENIENDO EL EXISTENTE";
@@ -391,8 +404,10 @@
                         break;
     }
     ?>
-    <a href='../menu.php?user=<?=$user?>&contraseña=<?=$contraseña?>'>Inicio</a>
-    <input type='button' onclick='history.back()' name='volver atrás' value='volver atrás'>
+<ul>
+    <li><input type='button' onclick='history.back()' name='volver atrás' value='volver atrás'></li>
+    <li><a href='../menu.php?user=<?=$user?>&contraseña=<?=$contraseña?>'>Inicio</a></li>
+</ul>
 </body>
 
 </html>

@@ -20,6 +20,11 @@
     width: 20%;
     height: 20%;
         }
+        li{
+            text-decoration:none;
+            display:inline-block;
+            padding:5px 10px;
+    }
 
     </style>
 </head>
@@ -117,6 +122,14 @@
 
                         if ($stmt->execute()) {
                             echo "Insertado correctamente";
+                            $registro = fopen("../pufosaRegistros.txt", "a+b");
+                                if (!$registro) {
+                                    echo "error al abrir el fichero";
+                                } else {
+                                    $sentenciaEscritura= "Usuario: ".$user." ha añadido un cliente con ID: ". $_POST['Cliente_ID']. " el día ".date("d M y") . " \n ";
+                                    fwrite($registro, $sentenciaEscritura );    
+                                    rewind($registro);
+                                }
                         }
                     } catch (PDOException $e) {
 
@@ -353,8 +366,10 @@
     $conn = null;
 
     ?>
+<ul>
+    <li><input type='button' onclick='history.back()' name='volver atrás' value='volver atrás'></li>
+    <li><a href='../menu.php?user=<?=$user?>&contraseña=<?=$contraseña?>'>Inicio</a></li>
+</ul>
 </body>
-<a href='../menu.php?user=<?=$user?>&contraseña=<?=$contraseña?>'>Inicio</a>
-<input type='button' onclick='history.back()' name='volver atrás' value='volver atrás'>
 
 </html>

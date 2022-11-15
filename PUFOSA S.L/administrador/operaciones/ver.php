@@ -15,6 +15,11 @@ table {
     width: 20%;
     height: 20%;
 }
+li{
+    text-decoration:none;
+    display:inline-block;
+    padding:5px 10px;
+}
 </style>";
     try {
         //consulta genérica que recoge valor y lo implanta 
@@ -143,9 +148,11 @@ case 'ubicacion':
 
             break;
     }
-    echo "<a href='../menu.php?user=$user&contraseña=$contraseña'>Inicio</a>";
-
-    echo "<input type='button' onclick='history.back()' name='volver atrás' value='volver atrás'>";
+    echo "<ul>
+    <li><input type='button' onclick='history.back()' name='volver atrás' value='volver atrás'></li>
+    <li><a href='../menu.php?user=$user&contraseña=$contraseña'>Inicio</a></li>
+</ul>";
+   
     }
     catch(PDOException $e){
         echo "Error: " . $e->getMessage();

@@ -13,13 +13,17 @@
     width: 20%;
     height: 20%;
         }
-
+        li{
+            text-decoration:none;
+            display:inline-block;
+            padding:5px 10px;
+    }
     </style>
 </head>
 <body>
     <h1>User</h1>
 <!-- MENU USER SOLO REDIRIGE A LOS MIMOS ARCHIVOS PERO CORTADOS POR VALOR, POR LO QUE SOLO SE MUESTRAN LAS OPCIONES DE UNA ÚNICA TABLA -->
-    <a href="../index.php">Cerrar Sesión</a>
+
 <p></p>
     <form method="post" >
 
@@ -35,10 +39,16 @@
 
 <p><input type="submit" name="enviar" value="Enviar datos"></p>
 </form>
+<ul>
 
+        <li><a href="../index.php">Cerrar Sesión</a></li>
+
+    </ul>
 <?php 
 $user=$_GET['user'];
 $contraseña=$_GET['contraseña'];
+
+
 
 if (isset($_POST['enviar'])){
     switch($_POST["accion"]){

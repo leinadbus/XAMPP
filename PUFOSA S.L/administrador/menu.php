@@ -10,10 +10,14 @@
             margin: 0 auto;
     text-align: center;
     font-size:90%;
-    width: 20%;
-    height: 20%;
+    width: 30%;
+    height: 30%;
         }
-
+        li{
+            text-decoration:none;
+            display:inline-block;
+            padding:5px 10px;
+    }
     </style>
     <?php
 require "../conexión.php";
@@ -24,7 +28,7 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $user=$_GET['user'];
 $contraseña=$_GET['contraseña'];
 $empresario='';
-
+$registro = fopen("pufosaRegistros.txt","a+b");
 //-----------------COMPROBACIÓN DEL LOGIN-----------------
 
 if ($contraseña != 1111){
@@ -52,7 +56,7 @@ if ($contraseña != 1111){
             }else if ($num['Funcion']=="PRESIDENT"){
                 //Si el roll es empresario, se nos mostrará la opción del informe de departamento
                 echo "<p>Bienvenid@ Presidente/a</p>";
-                $empresario= "<a href='operaciones/informeP.php?user=$user&contraseña=$contraseña'>Informe de Departamentos</a>";
+                $empresario= "<a href='operaciones/informeP.php?user=$user&contraseña=$contraseña'>Informe Dpts</a>";
             }else header("location:../usuario/menu.php?user=$user&contraseña=$contraseña");
         }
 
@@ -64,7 +68,7 @@ if ($contraseña != 1111){
 <body>
     <h1>PUFOSA S.L.</h1>
     <!-- El html contempla cerrar sesión y dos selects que nos llevan a donde le pidamos con sus correspondientes valores de login -->
-    <a href="../index.php">Cerrar Sesión</a>
+    
 <p></p>
 
     <form method="post" >
@@ -93,11 +97,14 @@ if ($contraseña != 1111){
     <input type="hidden" name="user" value="<?=$user?>">
     <input type="hidden" name="contraseña" value="<?=$contraseña?>">
 
-    <p><?php echo $empresario ?></p>
-
-<p><input type="submit" name="enviar" value="Enviar datos"></p>
+<input type="submit" name="enviar" value="Enviar datos">
 </form>
+<ul>
+        <li><a href='pufosaRegistros.php?user=$user&contraseña=$contraseña'>Fichero LOG</a></li>
+        <li><?php echo $empresario ?></li>
+        <li><a href="../index.php">Cerrar Sesión</a></li>
 
+    </ul>
  <?php
  
 //-----------------COMPROBACIÓN DE SELECCIÓN-----------------
