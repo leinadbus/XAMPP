@@ -1,0 +1,29 @@
+Una interfaz no se puede instanciar
+
+
+los métodos se tienen que implementar obligatoriamente en la clase que usemos como implements
+A la hora de instanciar hay que trbajar siempre con la clase y no como la interfaz
+Las interfaces son plantillas, no valen para hacer instancias.
+
+-------------------------------------------INSTERFAZ-------------------------------------------
+interface Persona2 {
+const VARIABLE =22;
+
+    public function calcularsalario();
+
+}
+
+class Persona implements Persona2{}
+-------------------------------------------INSTERFAZ-------------------------------------------
+
+
+-------------------------------------------ABSTRACT CLASS-------------------------------------------
+
+Una clase abstracta lo que hace es evitar que esa clase se pueda instanciar, por eso es 
+incompatible ponerle variables Final
+Los métodos abstractos obligan a la clase a ser abstracta, tambien obliga a implementar los métodos abstractos
+
+
+abstract class ReadingMaterial {}
+
+-------------------------------------------ABSTRACT CLASS-------------------------------------------

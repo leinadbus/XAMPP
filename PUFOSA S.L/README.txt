@@ -19,7 +19,6 @@ Si desea realizar cambios importantes de la BD, por favor, póngase en contacto 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ----------FUNCIONALIDAD:
 TODOS LOS PUNTOS INCLUIDOS EN ESTE TRABAJO SE PUEDEN LLEVAR A CABO.
-*FICHERO LOG NO ESTÁ INCLUIDO POR DIVERSOS FALLOS EN SU EJECUCIÓN, NO SERÁ VISIBLE NI EN CÓDIGO NI EN PANTALLA POR ESTABILIDAD DE LA APLICACIÓN.
 
 La aplicación posee tanto botón de Inicio como de retroceso, Inicio nos lleva a la primera página, retroceso simplemente hacia atrás.
-La aplicación tambien posee un cierre de sesión en la parte superior de la página principal.
+La aplicación tambien posee un cierre de sesión en la parte inferior de la página principal.
