@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       table, td, th {
+ border:1px solid black;
+ border-spacing:5px;
+ }
+
+ table {
+ width:80%;
+ }
+ td {
+ padding:10px;
+ }
+ h1{
+    text-align: center;
+ }
+ #lunes{
+    width:40%;
+ }
+
+ #tablita{
+    border-spacing:2px;
+ }
+
+        </style>
+</head>
+<body>
+    <h1>Horario de DW1A</h1>
+    <table>
+        <tr>
+            <td>Horario</td>
+            <th id="lunes">Lunes</th>
+            <th>Martes</th>
+            <th>Miercoles</th>
+            <th>Jueves</th>
+            <th>Viernes</th>
+        </tr>
+        <tr>
+            <td>10:30</td>
+            <td colspan="2">Matematicas</td>
+            <td>Fisica</td>
+            <td>Dibujo</td>
+            <td>Matemáticas</td>
+        </tr>
+
+        <tr>
+            <td>11:30</td>
+            <td>Lenguaje</td>
+            <td rowspan="3">
+                <table id="tablita">
+                    <tr>
+                        <td>Teoría</td>
+                    </tr>
+                    <tr>
+                        <td>Prácticas</td>
+                    </tr>
+                </table>
+            </td>
+            <td>Quimica</td>
+            <td>fisica</td>
+            <td>FOL</td>
+        </tr>
+        <tr>
+            <td>12:00</td>
+            <td rowspan="2">Fisica</td>
+
+            <td>Geografia</td>
+            <td rowspan="2">Dibujo</td>
+            <td rowspan="2">Matematicas</td>
+        </tr>
+        <tr>
+            <td>13:00</td>
+            <td>Dibujo</td>
+            
+        </tr>
+        
+    </table>
+</body>
+</html>
