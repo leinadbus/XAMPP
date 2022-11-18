@@ -1,0 +1,23 @@
+Inserción correcta del alumno: dan con sentencia: INSERT INTO alumnos (CODIGO, NOMBRE, APELLIDOS, TELEFONO, CORREO) VALUES (:p,:a, :b, :c, :d);  
+ Inserción correcta del alumno: dan con sentencia: INSERT INTO alumnos (CODIGO, NOMBRE, APELLIDOS, TELEFONO, CORREO) VALUES (:p,:a, :b, :c, :d);  
+ Inserción correcta del alumno: dan con sentencia: INSERT INTO alumnos (CODIGO, NOMBRE, APELLIDOS, TELEFONO, CORREO) VALUES (:p,:a, :b, :c, :d);  
+ Inserción correcta del alumno: dan con sentencia: INSERT INTO alumnos (CODIGO, NOMBRE, APELLIDOS, TELEFONO, CORREO) VALUES (:p,:a, :b, :c, :d);  
+ Inserción correcta del alumno: dan con sentencia: INSERT INTO alumnos (CODIGO, NOMBRE, APELLIDOS, TELEFONO, CORREO) VALUES (:p,:a, :b, :c, :d);  
+ Inserción correcta del alumno: dan con sentencia: INSERT INTO alumnos (CODIGO, NOMBRE, APELLIDOS, TELEFONO, CORREO) VALUES (:p,:a, :b, :c, :d);  
+ Inserción correcta del alumno: dan con sentencia: INSERT INTO alumnos (CODIGO, NOMBRE, APELLIDOS, TELEFONO, CORREO) VALUES (:p,:a, :b, :c, :d);  
+ Inserción correcta del alumno: dan con sentencia: INSERT INTO alumnos (CODIGO, NOMBRE, APELLIDOS, TELEFONO, CORREO) VALUES (:p,:a, :b, :c, :d);  
+ Inserción correcta del alumno: dan con sentencia: INSERT INTO alumnos (CODIGO, NOMBRE, APELLIDOS, TELEFONO, CORREO) VALUES (:p,:a, :b, :c, :d);  
+ Inserción correcta del alumno: dan con sentencia: INSERT INTO alumnos (CODIGO, NOMBRE, APELLIDOS, TELEFONO, CORREO) VALUES (:p,:a, :b, :c, :d);  
+ Inserción correcta del alumno: dan con sentencia: INSERT INTO alumnos (CODIGO, NOMBRE, APELLIDOS, TELEFONO, CORREO) VALUES (:p,:a, :b, :c, :d);  
+ Inserción correcta del alumno: dan con sentencia: INSERT INTO alumnos (CODIGO, NOMBRE, APELLIDOS, TELEFONO, CORREO) VALUES (:p,:a, :b, :c, :d);  
+ Inserción correcta del alumno: dan con sentencia: INSERT INTO alumnos (CODIGO, NOMBRE, APELLIDOS, TELEFONO, CORREO) VALUES (:p,:a, :b, :c, :d);  
+ Inserción correcta del alumno: dan con sentencia: INSERT INTO alumnos (CODIGO, NOMBRE, APELLIDOS, TELEFONO, CORREO) VALUES (:p,:a, :b, :c, :d);  
+ Superados los 3 intentos de inicio de sesión. 
+ Correo no válido Llevas 1 intentos 
+ Correo no válido Llevas 1 intentos 
+ Correo no válido Llevas 1 intentos 
+ Correo no válido Llevas 2 intentos 
+ Correo no válido Llevas 3 intentos 
+ Superados los 3 intentos de inicio de sesión. 
+ Inserción correcta del alumno: dan con sentencia: INSERT INTO alumnos (CODIGO, NOMBRE, APELLIDOS, TELEFONO, CORREO) VALUES (:p,:a, :b, :c, :d);  
+ 
