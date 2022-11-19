@@ -44,6 +44,8 @@ class Alumno {
         $this->correo=$correo;
     }
 
+    //if(str_contains($texto,'caracter')==true && true) return true;
+
     function comprobacionCorreo ($valor) {
         $arroba= strpos($valor, "@");
         $punto= strpos($valor, ".");
