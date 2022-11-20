@@ -32,7 +32,7 @@ class Alumno {
         return $this->telefono;
     }
 
-    public function set_nombre ($telefono) {
+    public function set_telefono ($telefono) {
         $this->telefono=$telefono;
     }
 //CORREO
@@ -40,7 +40,7 @@ class Alumno {
         return $this->correo;
     }
 
-    public function set_nombre ($correo) {
+    public function set_correo ($correo) {
         $this->correo=$correo;
     }
 
@@ -63,6 +63,10 @@ class Alumno {
             return true;
         }else return false;
 
+    }
+
+    public function toString (){
+        return $this->nombre ;
     }
    
 }

@@ -21,7 +21,7 @@ $jMaquina='tijera';
     $jMaquina='papel';
 }
 
-
+//$maquina = array("ganadas" => (int) ($_POST['maquinaGanada]??0)), perdidas empatadas
 $maximoPartidas=5;
 
 
@@ -76,6 +76,7 @@ echo "</br>Ganadores: Máquina: ".$ganadoMaquina." Usuario: ".$ganadoUser;
     <input type="hidden" name="ganadoUser" value="<?=$ganadoUser??'0'?>">
     <input type="hidden" name="ganadoMaquina" value="<?=$ganadoMaquina??'0'?>">
     <input type="hidden" name="empate" value="<?=$empate??'0'?>">
+    <!-- $maquina=$_POST['loquesea']??0-->
 
 
 
