@@ -233,7 +233,7 @@ $conn = new PDO ("mysql:host=$servidor;dbname=mibbdd;charset=utf8",$usuario,$cla
         <input type="hidden" name="intentos" value="<?=$intentos??'0'?>">
 
         <label for='mensajes'>Avisos</label>
-        <input type="text" name="mensajes" value="<?=$msgConfirmación??''?>" disabled>
+        <input type="textarea" name="mensajes" value="<?=$msgConfirmación??''?>" disabled>
         
 
         <input type='submit' name='btnEnviar' >
