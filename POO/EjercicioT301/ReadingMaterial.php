@@ -39,7 +39,7 @@ abstract class ReadingMaterial {
    
 
     function __construct ($tit,$pag,$pri,$atributoPublis) { //$id que le he quitado
-        self::$id++;//De ismael
+        self::$id++;//De ismaelx
         $this->title=$tit;
         $this->pages=$pag;
         $this->price=$pri;
