@@ -25,4 +25,5 @@ Inserción correcta del alumno: dan con sentencia: INSERT INTO alumnos (CODIGO, 
  Correo no válido Llevas 3 intentos 
  Superados los 3 intentos de inicio de sesión. 
  Inserción correcta del alumno: da con sentencia: INSERT INTO alumnos (CODIGO, NOMBRE, APELLIDOS, TELEFONO, CORREO) VALUES (:p,:a, :b, :c, :d);  
+ Correo no válido Llevas 1 intentos 
  
