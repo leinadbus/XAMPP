@@ -175,8 +175,9 @@
 
         </fieldset>
         </form>";
-
-
+//SI SACAMOS LISTA DE VENDEDORES PERO NO DE DEPARTAMENTOS
+// CONTROLO MEDIANTE FALLO DE BASE DE DATOS, SI NO INTRODUCE VALOR ADECUADO EL 
+//CODIGO FALLA Y DEVUELVO EL MENSAJE CON SU MOTIVO
                 if (isset($_POST["btnEnviar"])) {
                     try {
 

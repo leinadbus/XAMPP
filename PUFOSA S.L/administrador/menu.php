@@ -32,6 +32,8 @@ $registro = fopen("pufosaRegistros.txt","a+b");
 //-----------------COMPROBACIÓN DEL LOGIN-----------------
 
 if ($contraseña != 1111){
+
+    //CONTROL DE CONTRASEÑA----------------------------------------------------
     header("location:../index.php?msg=contraseña incorrecta");
 }else{
 
@@ -43,6 +45,7 @@ if ($contraseña != 1111){
         $registros=$stmt->fetchAll(PDO::FETCH_ASSOC);
         
         if($registros==null){
+            //CONTROL DE USUARIO----------------------------------------------------
             header("location:../index.php?msg=Usuario incorrecto");
            
         }else {
