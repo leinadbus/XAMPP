@@ -8,7 +8,7 @@ class Conexion {
         $this->nombre=$nombre;
     }
 
-     public function conectar (){
+     protected function conectar (){
         $cone=$this->nombre;
          try {
              $conn = new PDO ("mysql:host=localhost;dbname=$cone;charset=utf8",$this->usuario,$this->clave);

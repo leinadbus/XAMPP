@@ -10,19 +10,19 @@ class Usuario extends Crud {
     private $direccion;
     private $telefono;
     private $edad;
-    private $conexion;
+   // private $conexion;
     public static $TABLA = 'usuarios';
 
-    function __construct ($id, $nombre, $apellido, $sexo, $direccion, $telefono, $edad, $conexion){
+    function __construct ($nombre, $apellido, $sexo, $direccion, $telefono, $edad, $conexion){
         parent::__construct($conexion,self::$TABLA);
-        $this->Id=$id;
+        //$this->Id=$id;
         $this->nombre=$nombre;
         $this->apellido=$apellido;
         $this->sexo=$sexo;
         $this->direccion=$direccion;
         $this->telefono=$telefono;
         $this->edad=$edad;
-        $this->conexion=$conexion;
+        //$this->conexion=$conexion;
 
     }
 //ID
@@ -95,6 +95,13 @@ class Usuario extends Crud {
     function crear (){
         try{
         $conn=parent::conectar();
+//RECOGEMOS EL MAXIMO IF Y LO GUARDAMOS EN LAS PROPIEDADES DE LA INSTANCIA
+        $sql="SELECT MAX(id) from usuarios;";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $registros=$stmt->fetch();
+        $this->Id=$registros[0]+1;
+//INSERTAMOS EN LA BD CON LOS VALORES
         $sql="INSERT INTO usuarios (nombre, apellido,sexo,direccion, telefono) VALUES (:A,:B,:C,:D,:E)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':A', $this->nombre);
@@ -110,16 +117,23 @@ class Usuario extends Crud {
     }
 
     function actualizar (){
-        $conn = conectar();
+        try{
+        $conn =parent::conectar();
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "UPDATE departamento SET departamento_ID=:cli, Nombre=:nom, Ubicacion_ID=:dir WHERE departamento_ID=:cli";
+        $sql = "UPDATE usuarios SET nombre=:A, apellido=:B, sexo=:C, direccion=:E, telefono=:F WHERE id=:D";
         $stms = $conn->prepare($sql);
-        $stms->bindParam(':cli', $clienteID);
-        $stms->bindParam(':nom', $nombre);
-        $stms->bindParam(':dir', $direccion);
+        $stms->bindParam(':A', $this->nombre);
+        $stms->bindParam(':B', $this->apellido);
+        $stms->bindParam(':C', $this->sexo);
+        $stms->bindParam(':D', $this->Id);
+        $stms->bindParam(':E', $this->direccion);
+        $stms->bindParam(':F', $this->telefono);
     
         if($stms->execute())
-        ECHO  "El departamento se ha Actualizado correctamente";
+        ECHO  "El usuario se ha Actualizado correctamente";
+        }catch(PDOException $e){
+            return "Error: " . $e->getMessage();
+        }
     }
 
 
@@ -127,9 +141,13 @@ class Usuario extends Crud {
 
 }
 
-$usuario = new Usuario('3','pepe','pedrino','hombre','amapola 13','918476638',34,'protectora');
+// $usuario = new Usuario('gavi','pedrino','hombre','amapola 13','918476638',34,'protectora');
 
-print_r($usuario);
+// // print_r($usuario);
+// // echo "<br/>";
+//  $usuario->crear();
+// print_r($usuario);
 
-$usuario->crear();
+// $usuario->set_sexo('Mujer');
+// $usuario->actualizar();
 ?>
