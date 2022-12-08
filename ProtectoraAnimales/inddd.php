@@ -24,4 +24,8 @@ echo "<br/>";echo "<br/>";
  print_r($prueba);
  echo "<br/>";echo "<br/>";
  $prueba->crear();
+ echo "<br/>";echo "<br/>";
+ print_r($prueba);
+$prueba->set_razon('pepito');
+$prueba->actualizar();
 ?>

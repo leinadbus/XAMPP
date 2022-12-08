@@ -33,28 +33,28 @@ class Adopcion extends Crud {
         $this->Id=$id;
     }
 //IDANIMAL
-    public function get_nombre () {
-        return $this->nombre;
+    public function get_idanimal () {
+        return $this->idanimal;
     }
 
-    public function set_nombre ($nombre) {
-        $this->nombre=$nombre;
+    public function set_idanimal ($idanimal) {
+        $this->idanimal=$idanimal;
     }
 //ISUSUARIO
-    public function get_especie () {
-        return $this->especie;
+    public function get_idusuario () {
+        return $this->idusuario;
     }
 
-    public function set_especie ($especie) {
-        $this->especie=$especie;
+    public function set_idusuario ($idusuario) {
+        $this->idusuario=$idusuario;
     }
 //FECHA
-    public function get_raza () {
-        return $this->raza;
+    public function get_fecha () {
+        return $this->fecha;
     }
 
-    public function set_raza ($raza) {
-        $this->raza=$raza;
+    public function set_fecha ($fecha) {
+        $this->fecha=$fecha;
     }
 //RAZON
     public function get_genero () {
@@ -66,12 +66,12 @@ class Adopcion extends Crud {
     }
 
 //CONEXION
-    public function get_conexion () {
-        return $this->conexion;
+    public function get_razon () {
+        return $this->razon;
     }
 
-    public function set_conexion ($conexion) {
-        $this->conexion=$conexion;
+    public function set_razon ($razon) {
+        $this->razon=$razon;
     }
 
 
@@ -84,8 +84,6 @@ class Adopcion extends Crud {
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $registros=$stmt->fetch();
-        echo "-------------------------"; print_r($registros);
-        echo $this->Id;
         $this->Id=$registros[0]+1;
 //INSERTAMOS EN LA BD CON LOS VALORES
         $sql="INSERT INTO adopciones (idAnimal, idUsuario, fecha, razon) VALUES (:A,:B,:C,:D)";
@@ -107,16 +105,14 @@ class Adopcion extends Crud {
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "UPDATE adopciones SET idAnimal=:A, idUsuario=:B, fecha=:C, razon=:E WHERE id=:D";
         $stms = $conn->prepare($sql);
-        $stms->bindParam(':A', $this->nombre);
-        $stms->bindParam(':B', $this->especie);
-        $stms->bindParam(':C', $this->raza);
+        $stms->bindParam(':A', $this->idanimal);
+        $stms->bindParam(':B', $this->idusuario);
+        $stms->bindParam(':C', $this->fecha);
         $stms->bindParam(':D', $this->Id);
-        $stms->bindParam(':E', $this->genero);
-        $stms->bindParam(':F', $this->color);
-        $stms->bindParam(':G', $this->edad);
+        $stms->bindParam(':E', $this->razon);
     
         if($stms->execute())
-        ECHO  "El animal se ha Actualizado correctamente";
+        ECHO  "La adopcion se ha Actualizado correctamente";
         }catch(PDOException $e){
             return "Error: " . $e->getMessage();
         }
