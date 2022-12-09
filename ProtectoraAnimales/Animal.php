@@ -11,7 +11,7 @@ class Animal extends Crud {
     private $color;
     private $edad;
    // private $conexion;
-    public static $TABLA = 'animales';
+    public static $TABLA = 'animal';
 
     function __construct ($nombre, $especie, $raza, $genero, $color, $edad, $conexion){
         parent::__construct($conexion,self::$TABLA);
@@ -96,13 +96,13 @@ class Animal extends Crud {
         try{
         $conn=parent::conectar();
 //RECOGEMOS EL MAXIMO IF Y LO GUARDAMOS EN LAS PROPIEDADES DE LA INSTANCIA
-        $sql="SELECT MAX(id) from animales;";
+        $sql="SELECT MAX(id) from animal;";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $registros=$stmt->fetch();
         $this->Id=$registros[0]+1;
 //INSERTAMOS EN LA BD CON LOS VALORES
-        $sql="INSERT INTO animales (nombre, especie, raza, genero, color, edad) VALUES (:A,:B,:C,:D,:E,:F)";
+        $sql="INSERT INTO animal (nombre, especie, raza, genero, color, edad) VALUES (:A,:B,:C,:D,:E,:F)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':A', $this->nombre);
         $stmt->bindParam(':B', $this->especie);
@@ -121,7 +121,7 @@ class Animal extends Crud {
         try{
         $conn =parent::conectar();
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "UPDATE animales SET nombre=:A, especie=:B, raza=:C, genero=:E, color=:F, edad=:G WHERE id=:D";
+        $sql = "UPDATE animal SET nombre=:A, especie=:B, raza=:C, genero=:E, color=:F, edad=:G WHERE id=:D";
         $stms = $conn->prepare($sql);
         $stms->bindParam(':A', $this->nombre);
         $stms->bindParam(':B', $this->especie);
